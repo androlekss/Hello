@@ -1,15 +1,17 @@
 package ua.com.androlekss.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Contact {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "contact_generator")
+    @SequenceGenerator(
+            name = "contact_generator",
+            sequenceName = "contact_sequence",
+            initialValue = 1000
+    )
     private Long id;
 
     private String name;
